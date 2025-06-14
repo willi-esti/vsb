@@ -1,11 +1,11 @@
 FROM python:3.10-slim
 
-WORKDIR /opt/vsb
+WORKDIR /app
 
-COPY ../../requirements.txt ./
+COPY ./requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY ../../src/ ./src/
+COPY ./src/ ./src/
 
 # Install any additional system dependencies if needed
 RUN apt-get update && apt-get install -y --no-install-recommends \

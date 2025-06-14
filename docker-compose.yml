@@ -34,20 +34,20 @@ services:
     depends_on:
       - postgres_vsb
 
-  #python_vsb:
-  #  build:
-  #    context: .
-  #    dockerfile: Dockerfile
-  #  container_name: python_vsb
-  #  working_dir: /opt/vsb
-  #  volumes:
-  #    - ./src:/opt/vsb/src
-  #    - ./requirements.txt:/opt/vsb/requirements.txt
-  #  environment:
-  #    - PYTHONUNBUFFERED=1
-  #  depends_on:
-  #    - postgres_vsb
-  #  command: bash
+  python_vsb:
+    build:
+      context: .
+      dockerfile: docker/python/Dockerfile.dev
+    container_name: python_vsb
+    working_dir: /opt/vsb
+    volumes:
+      - ./src:/app
+      - ./requirements.txt:/opt/vsb/requirements.txt
+    environment:
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - postgres_vsb
+    command: tail -f /dev/null # Keep the container running for development
 
 volumes:
   db_data:
