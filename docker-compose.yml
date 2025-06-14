@@ -43,11 +43,18 @@ services:
     volumes:
       - ./src:/app
       - ./requirements.txt:/opt/vsb/requirements.txt
+      - ./models:/opt/models
     environment:
       - PYTHONUNBUFFERED=1
     depends_on:
       - postgres_vsb
     command: tail -f /dev/null # Keep the container running for development
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
 
 volumes:
   db_data:

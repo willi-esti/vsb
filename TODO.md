@@ -1,9 +1,10 @@
 Run test env : 
 
+```sh
 docker exec -it python_vsb bash
 cd /app/
 python embedder.py
-
+```
 
 
 
