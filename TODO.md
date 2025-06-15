@@ -1,10 +1,9 @@
 Run test env : 
 
-```sh
 docker exec -it python_vsb bash
 cd /app/
 python embedder.py
-```
+
 
 
 
@@ -17,7 +16,7 @@ docker run -it --name app python-app bash
 ```
 
 ```sh
-docker compose down; docker volume rm vsb_db_data; docker compose up -d; docker compose logs -f 
+docker compose down && docker volume rm vsb_db_data; docker compose up -d && docker compose logs -f
 ```
 
 

@@ -39,11 +39,12 @@ services:
       context: .
       dockerfile: docker/python/Dockerfile.dev
     container_name: python_vsb
-    working_dir: /opt/vsb
+    working_dir: /app
     volumes:
-      - ./src:/app
-      - ./requirements.txt:/opt/vsb/requirements.txt
-      - ./models:/opt/models
+      - ./src:/app/src
+      - ./requirements.txt:/app/requirements.txt
+      - ./models:/app/models
+      - ./data:/app/data
     environment:
       - PYTHONUNBUFFERED=1
     depends_on:

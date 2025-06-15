@@ -1,2 +1,5 @@
 .env
 models
+data
+
+__pycache__
