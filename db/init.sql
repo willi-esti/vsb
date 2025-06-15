@@ -27,7 +27,7 @@ CREATE TABLE chunks (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   knowledge_item_id UUID REFERENCES knowledge_items(id) ON DELETE CASCADE,
   content TEXT NOT NULL,
-  embedding VECTOR(768),
+  embedding VECTOR(384),
   content_hash TEXT,                             -- optional, for exact-dup detection
   duplicate_of UUID REFERENCES chunks(id),       -- if near-duplicate
   chunk_index INT,                               -- order within the document

@@ -3,6 +3,7 @@ from transformers import AutoTokenizer
 
 def smart_overlap_chunk(
     file_path,
+    cache_folder,
     model_name="sentence-transformers/all-MiniLM-L6-v2",
     chunk_size_tok=256, 
     overlap_tok=50
@@ -12,7 +13,7 @@ def smart_overlap_chunk(
     using the tokenizer's built-in striding mechanism.
     Returns a flat list of all overlapping token chunks as text.
     """
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    tokenizer = AutoTokenizer.from_pretrained(model_name, cache_dir=cache_folder)
     
     # Determine the model's maximum sequence length, default to 512 if not specified
     model_max_len = tokenizer.model_max_length if hasattr(tokenizer, 'model_max_length') and tokenizer.model_max_length else 512
