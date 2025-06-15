@@ -6,7 +6,6 @@ CREATE TABLE knowledge_items (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   title TEXT NOT NULL,                           -- short human-readable label
   summary TEXT,                                  -- optional description
-  raw_text TEXT,                                 -- full extracted or generated text
   created_at TIMESTAMP DEFAULT NOW(),
   updated_at TIMESTAMP DEFAULT NOW()         -- last modified timestamp
 );
@@ -17,6 +16,8 @@ CREATE TABLE source_files (
   knowledge_item_id UUID REFERENCES knowledge_items(id) ON DELETE CASCADE,
   file_path TEXT NOT NULL,                       -- local path or URL
   file_type TEXT,                                -- 'pdf', 'md', 'chatlog', etc.
+  raw_text TEXT,                                 -- full extracted or generated text
+  sha256_hash TEXT,                             -- optional, for exact-dup detection
   created_at TIMESTAMP DEFAULT NOW(),
   updated_at TIMESTAMP DEFAULT NOW()           -- last modified timestamp
 );
