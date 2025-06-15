@@ -18,7 +18,7 @@ class LogColors:
 # Load environment variables from .env file in the parent directory
 load_dotenv(os.path.join(os.path.dirname(__file__), '..', '.env'))
 
-def logger(message, level='INFO', log_file=None):
+def logger(message, level=os.getenv('LOG_LEVEL', 'INFO').upper(), log_file=None):
     dev_mode = os.getenv('DEV_MODE', 'false').lower() == 'true'
     log_path = os.getenv('LOG_PATH', '/app/logs')
     if log_file is None:
