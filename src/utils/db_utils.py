@@ -60,3 +60,17 @@ def file_exists_by_sha256(sha256_hash):
         with conn.cursor() as cur:
             cur.execute("SELECT 1 FROM source_files WHERE sha256_hash = %s LIMIT 1;", (sha256_hash,))
             return cur.fetchone() is not None
+
+def get_knowledge_items():
+    """Fetch all knowledge items."""
+    with get_conn() as conn:
+        with conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor) as cur:
+            cur.execute("SELECT * FROM knowledge_items ORDER BY created_at DESC;")
+            return cur.fetchall()
+
+def delete_knowledge_item(knowledge_item_id):
+    """Delete a knowledge item and cascade to related files and chunks."""
+    with get_conn() as conn:
+        with conn.cursor() as cur:
+            cur.execute("DELETE FROM knowledge_items WHERE id = %s;", (knowledge_item_id,))
+            conn.commit() 

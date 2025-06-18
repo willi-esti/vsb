@@ -51,3 +51,23 @@ CREATE TABLE knowledge_item_tags (
   tag_id UUID REFERENCES tags(id) ON DELETE CASCADE,
   PRIMARY KEY (knowledge_item_id, tag_id)
 );
+
+
+INSERT INTO tags (name, description) VALUES
+  ('Workout', 'My workout routines and exercises'),
+  ('Nutrition', 'Diet plans and nutritional information'),
+  ('Work', 'Work-related knowledge and skills'),
+  ('Personal Info', 'Personal information and notes'),
+  ('Todo', 'Tasks and to-do items'),
+  ('Projects', 'Ongoing projects and their details'),
+  ('Ideas', 'Creative ideas and brainstorming notes'),
+  ('Learning', 'Learning resources and study materials'),
+  ('Health', 'Health-related knowledge and tips'),
+  ('Finance', 'Financial information and budgeting tips'),
+  ('Diabetes', 'Diabetes management and information'),
+  ('Recipes', 'Cooking recipes and culinary tips'),
+  ('Travel', 'Travel plans and experiences'),
+  ('Books', 'Books I want to read or have read'),
+  ('Movies', 'Movies I want to watch or have watched'),
+  ('Music', 'Music recommendations and playlists'),
+  ('Others', 'Miscellaneous knowledge items');
