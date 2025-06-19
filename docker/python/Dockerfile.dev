@@ -8,3 +8,5 @@ COPY requirements.txt .
 # Install torch with CUDA support first, then the rest
 RUN pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121 \
     && pip3 install --no-cache-dir -r requirements.txt
+
+EXPOSE 8000
